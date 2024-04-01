@@ -14,6 +14,8 @@ def index_range(page: int, page_size: int) -> Tuple[int, int]:
     particular pagination parameters.
     """
     return ((page - 1) * page_size, page_size * (page - 1) + page_size)
+
+
 class Server:
     """Server class to paginate a database of popular baby names.
     """
