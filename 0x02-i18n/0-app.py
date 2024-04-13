@@ -5,7 +5,7 @@ from flask import Flask, render_template
 app = Flask(__name__)
 
 
-@app.route('/', strict_slashes=False)
+@app.route('/')
 def index():
     """ Returns a string """
     return render_template('0-index.html')
