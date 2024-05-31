@@ -30,8 +30,8 @@ def get_locale() -> str:
 
 @app.route('/')
 def index() -> str:
-    """ Default route
-    
+    """Default route
+
     Returns:
         str: template 4-index.html
     """
@@ -40,4 +40,3 @@ def index() -> str:
 
 if __name__ == "__main__":
     app.run()
-
