@@ -1,13 +1,11 @@
 #!/usr/bin/env python3
-""" Module for trying out Babel i18n """
-from flask import Flask, render_template, request
+    """Module for trying out Babel i18n """
 from flask_babel import Babel
+from flask import Flask, render_template, request
 
 
 class Config:
-    """ Configuration Class for Babel"""
-
-    DEBUG = True
+    """Configuration Class for Babel"""
     LANGUAGES = ["en", "fr"]
     BABEL_DEFAULT_LOCALE = "en"
     BABEL_DEFAULT_TIMEZONE = "UTC"
@@ -21,22 +19,15 @@ babel = Babel(app)
 
 @babel.localeselector
 def get_locale() -> str:
-    """ best match language
-
-    Returns:
-        str: best match language
-    """
-    return request.accept_languages.best_match(app.config['LANGUAGES'])
+    """Selects a language translation to use for the request."""
+    return request.accept_languages.best_match(app.config["LANGUAGES"])
 
 
 @app.route('/')
-def index() -> str:
-    """deafult route
-    Returns:
-        str: template 3-index.html
-    """
-    return render_template("3-index.html")
+def get_index() -> str:
+    """Returns the index page."""
+    return render_template('3-index.html')
 
 
-if __name__ == "__main__":
-    app.run()
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=5000)
