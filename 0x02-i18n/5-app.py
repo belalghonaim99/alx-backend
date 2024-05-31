@@ -55,7 +55,7 @@ def get_locale() -> str:
 @app.route('/')
 def index() -> str:
     """Default route
-    
+
     Returns:
         str: template 5-index.html
     """
