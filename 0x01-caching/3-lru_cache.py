@@ -9,7 +9,7 @@ from base_caching import BaseCaching
 
 
 class LRUCache(BaseCaching):
-    """ 
+    """
     LRU Cache class that inherits from BaseCaching and is a caching system"""
 
     def __init__(self):
