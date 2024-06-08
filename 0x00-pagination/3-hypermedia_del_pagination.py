@@ -17,7 +17,7 @@ def index_range(page: int, page_size: int) -> Tuple[int, int]:
 
 
 class Server:
-    """Server class to paginate a dataset
+    """Server class to paginate a database of popular baby names.
     """
     DATA_FILE = "Popular_Baby_Names.csv"
 
@@ -25,7 +25,7 @@ class Server:
         self.__dataset = None
 
     def dataset(self) -> List[List]:
-        """Loads dataset
+        """Cached dataset
         """
         if self.__dataset is None:
             with open(self.DATA_FILE) as f:
@@ -51,22 +51,22 @@ class Server:
         """
         data = self.indexed_dataset()
         assert index is not None and index >= 0 and index <= max(data.keys())
-        data_return_page = []
-        count = 0
+        page_data = []
+        currentPageCount = 0
         next_index = None
         start = index if index else 0
         for i, item in data.items():
-            if i >= start and count < page_size:
-                data_return_page.append(item)
-                count += 1
+            if i >= start and currentPageCount < page_size:
+                page_data.append(item)
+                currentPageCount += 1
                 continue
-            if count == page_size:
+            if currentPageCount == page_size:
                 next_index = i
                 break
-        pages_info = {
+        page_info = {
             'index': index,
             'next_index': next_index,
-            'page_size': len(data_return_page),
-            'data': data_return_page,
+            'page_size': len(page_data),
+            'data': page_data,
         }
-        return pages_info
+        return page_info
